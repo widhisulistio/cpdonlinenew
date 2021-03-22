@@ -3,16 +3,6 @@
 
 <div class="col-sm-12">
     <div class="card card-primary">
-        <div class="row">
-            <div class="card-header">
-                <div class="box-tools pull-right">
-                    <a href="#" class="btn btn-primary btn-sm btn-flat">
-                        <i class="fa fa-plus"> Add</i>
-                    </a>
-                </div>
-            </div>
-        </div> <br>
-
         <div class="class-body p-0">
             <?php
             if (session()->getFlashdata('tambah')) {
@@ -23,15 +13,13 @@
                 echo '</h5></div>';
             }
             ?>
-            <?php
-            if (session()->getFlashdata('edit')) {
+            <?php if (session()->getFlashdata('edit')) {
                 echo '<div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-check"></i>';
+                <h5><i class="icon fa fa-check"></i>';
                 echo session()->getFlashdata('edit');
                 echo '</h5></div>';
-            }
-            ?>
+            } ?>
             <?php
             if (session()->getFlashdata('delete')) {
                 echo '<div class="alert alert-success alert-dismissible">
@@ -41,7 +29,7 @@
                 echo '</h5></div>';
             }
             ?>
-            <table id="example1" class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th width="70px">No</th>
@@ -56,8 +44,8 @@
                         <th>HP</th>
                         <th>Email</th>
                         <th>Kerja</th>
-                        <th>Status</th>
                         <th>DPC</th>
+                        <th>Status</th>
                         <th width="100px">Action</th>
                     </tr>
                 </thead>
@@ -85,11 +73,20 @@
                             <td> <?= $value['hp'] ?> </td>
                             <td> <?= $value['email'] ?> </td>
                             <td> <?= $value['tempat_kerja'] ?> </td>
-                            <td> <?= $value['status_kepegawaian'] ?> </td>
                             <td> <?= $value['nama_dpc'] ?> </td>
                             <td>
-                                <button class="btn btn-flat btn-warning btn-xs" data-toggle="modal" data-target="#edit<?= $value['id'] ?>"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-flat btn-danger btn-xs" data-toggle="modal" data-target="#delete<?= $value['id'] ?>"><i class="fa fa-trash   "></i></button>
+                                <?php
+                                    if ($value['status'] == 1) {
+                                        echo 'Belum Diajukan';
+                                    } elseif ($value['status'] == 2) {
+                                        echo 'Permohonan Verifikasi';
+                                    } else {
+                                        echo 'Sudah Diverifikasi';
+                                    }
+                                    ?>
+                            </td>
+                            <td>
+                                <button class="btn btn-flat btn-warning btn-xs" data-toggle="modal" data-target="#edit<?= $value['id'] ?>"><i class="fa fa-edit"></i> Permohonan Verifikasi</button>
                             </td>
                         </tr>
                     <?php } ?>
@@ -99,4 +96,81 @@
         </div>
     </div>
 </div>
+<!-- modal edit -->
+<?php foreach ($anggota as $key => $value) { ?>
+    <div class="modal fade" id="edit<?= $value['id'] ?>">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Data Anggota</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php echo form_open('anggota/editdata/' . $value['id']) ?>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>No Anggota</label>
+                        <input name="no_anggota" value="<?= $value['no_anggota'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Anggota</label>
+                        <input name="nama_anggota" value="<?= $value['nama_anggota'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggl Lahir</label>
+                        <input name="tgl_lahir" value="<?= $value['tgl_lahir'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <input name="jk" class="form-control" readonly value=<?php if ($value['jk'] == 1) {
+                                                                                        echo 'Laki-laki';
+                                                                                    } else {
+                                                                                        echo 'Perempuan';
+                                                                                    } ?>>
+                        </input>
+                    </div>
+                    <div class="form-group">
+                        <label>Hp</label>
+                        <input name="hp" value="<?= $value['hp'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input name="email" value="<?= $value['email'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>DPC</label>
+                        <select name="id_dpc" class="form-control">
+                            <option value="">--Pilih DPC--</option>
+                            <?php foreach ($dpc as $key => $dc) { ?>
+                                <option value="<?= $dc['id_dpc'] ?>" <?= $value['id_dpc'] == $dc['id_dpc'] ? 'selected' : '' ?>><?= $dc['nama_dpc'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Staus</label>
+                        <select name="status" class="form-control">
+                            <option value="<?= $value['status'] ?>"><?php if ($value['status'] == 1) {
+                                                                            echo 'Belum';
+                                                                        } else {
+                                                                            echo 'Ajukan Permohonan';
+                                                                        } ?></option>
+                            <option value="1">Belum Mengajukan</option>
+                            <option value="2">Ajukan Permohonan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Verifikasi</button>
+                </div>
+                <?php echo form_close() ?>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<?php } ?>
+
+<!-- /.modal -->
 <?= $this->endSection() ?>

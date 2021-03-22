@@ -62,6 +62,7 @@ class Verifikasi extends BaseController
 				session()->set('status_kepegawaian', $cek['status_kepegawaian']);
 				session()->set('id_dpc', $cek['id_dpc']);
 				session()->set('level', $cek['level']);
+				session()->set('status', $cek['status']);
 				return redirect()->to(base_url('anggota'));
 			} else {
 				session()->setFlashdata('pesan', 'Login Gagal!!!, Email atau Tanggal Lahir Salah!!');

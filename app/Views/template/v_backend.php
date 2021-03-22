@@ -47,10 +47,7 @@
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+
                 </a>
 
                 <div class="navbar-custom-menu">
@@ -74,11 +71,6 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="nav-item">
-                        <a href="<?= base_url('anggota') ?>" class="nav-link">
-                            <i class="fa fa-users"></i> <span>Pengajuan Verifikasi</span>
-                        </a>
-                    </li>
                     <?php
                     if (session()->get('level') == '1') { ?>
                         <li class="nav-item">
@@ -86,7 +78,18 @@
                                 <i class="fa fa-users"></i> <span>Anggota All</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('anggota/anggota_pengajuan') ?>" class="nav-link">
+                                <i class="fa fa-users"></i> <span>Pengajuan Verifikasi</span>
+                            </a>
+                        </li>
                     <?php } ?>
+                    <!-- <li class="nav-item">
+                        <a href="<?= base_url('anggota') ?>" class="nav-link">
+                            <i class="fa fa-users"></i> <span>Data Pengajuan</span>
+                        </a>
+                    </li> -->
+
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -110,7 +113,12 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        Footer
+                        <b>Kontak Person Verifikasi :</b> </br>
+                        DPC Sleman : Bu Fe (0877-1997-2009), Pak Ery (0852-2515-0762)</br>
+                        DPC Kota : Bu Ika (0856-2926-412), Pak Edi (0818-0274-7887)</br>
+                        DPC Bantul : Pak Agung (0812-2747-226)</br>
+                        DPC Gunung Kidul : Pak Sugeng (0813-2877-0164)</br>
+                        DPC Kulon Progo : Pak Widhi (0813-2847-9152)</br>
                     </div>
                     <!-- /.box-footer-->
                 </div>
@@ -159,6 +167,13 @@
                 'autoWidth': false
             })
         })
+    </script>
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 6000);
     </script>
 </body>
 

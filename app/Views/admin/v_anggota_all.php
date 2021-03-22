@@ -63,7 +63,7 @@
                 </thead>
                 <tbody>
                     <?php $no = 1;
-                    foreach ($anggota as $key => $value) { ?>
+                    foreach ($anggota_all as $key => $value) { ?>
                         <tr>
                             <td> <?= $no++ ?> </td>
                             <td> <?= $value['no_anggota'] ?> </td>
