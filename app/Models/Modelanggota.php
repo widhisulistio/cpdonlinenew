@@ -36,6 +36,16 @@ class Modelanggota extends Model
 			->get()
 			->getResultArray();
 	}
+	public function data_verified()
+	{
+		return $this->db->table('tbl_anggota')
+			->join('tbl_dpc', 'tbl_dpc.id_dpc = tbl_anggota.id_dpc', 'left')
+			->join('tbl_agama', 'tbl_agama.id_agama = tbl_anggota.id_agama', 'left')
+			->orderBy('tanggal', 'asc')
+			->where('status', 3)
+			->get()
+			->getResultArray();
+	}
 	public function editdata($data)
 	{
 		$this->db->table('tbl_anggota')

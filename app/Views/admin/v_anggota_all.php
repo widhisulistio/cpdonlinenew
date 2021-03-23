@@ -3,15 +3,6 @@
 
 <div class="col-sm-12">
     <div class="card card-primary">
-        <div class="row">
-            <div class="card-header">
-                <div class="box-tools pull-right">
-                    <a href="#" class="btn btn-primary btn-sm btn-flat">
-                        <i class="fa fa-plus"> Add</i>
-                    </a>
-                </div>
-            </div>
-        </div> <br>
 
         <div class="class-body p-0">
             <?php
@@ -41,6 +32,7 @@
                 echo '</h5></div>';
             }
             ?>
+            <div class="table-responsive" >
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -95,6 +87,8 @@
                     <?php } ?>
                 </tbody>
             </table>
+            </div>
+            
 
         </div>
     </div>

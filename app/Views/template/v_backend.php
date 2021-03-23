@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Collapsed Sidebar Layout</title>
+    <title>CPD Online | Collapsed Sidebar Layout</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -39,9 +39,9 @@
             <!-- Logo -->
             <a href="#" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-mini"><b>V</b>CPD</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Admin</b>LTE</span>
+                <span class="logo-lg"><b>Verifikasi</b>CPD</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -75,12 +75,17 @@
                     if (session()->get('level') == '1') { ?>
                         <li class="nav-item">
                             <a href="<?= base_url('anggota/anggota_all') ?>" class="nav-link">
-                                <i class="fa fa-users"></i> <span>Anggota All</span>
+                                <i class="fa fa-database"></i> <span>Anggota All</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('anggota/anggota_pengajuan') ?>" class="nav-link">
                                 <i class="fa fa-users"></i> <span>Pengajuan Verifikasi</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('anggota/anggota_verified') ?>" class="nav-link">
+                                <i class="fa fa-check-square-o"></i> <span>Verified</span>
                             </a>
                         </li>
                     <?php } ?>

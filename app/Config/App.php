@@ -25,6 +25,8 @@ class App extends BaseConfig
 	 */
 	//public $baseURL = 'http://localhost:8080/';
 	public $baseURL = 'http://localhost/cpdonline/public/';
+	//public $baseURL = 'http://192.168.64.2/cpdonline/public/';
+
 
 	/**
 	 * --------------------------------------------------------------------------

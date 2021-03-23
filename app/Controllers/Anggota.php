@@ -61,4 +61,14 @@ class Anggota extends BaseController
 		];
 		return view('admin/v_anggota_pengajuan', $data);
 	}
+	public function anggota_verified()
+	{
+		$data = [
+			'title' => 'Data Telah Di Verifikasi',
+			'subtitle' => 'Anggota',
+			'dpc' => $this->ModelDpc->getalldata(),
+			'anggota' => $this->Modelanggota->data_verified(),
+		];
+		return view('admin/v_anggota_verified', $data);
+	}
 }

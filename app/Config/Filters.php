@@ -19,6 +19,7 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+		'filteruser' => \App\Filters\Filteruser::class,
 	];
 
 	/**
@@ -29,10 +30,16 @@ class Filters extends BaseConfig
 	 */
 	public $globals = [
 		'before' => [
+			'filteruser' => [
+				'except' => ['verifikasi', 'verifikasi/*', '/'],
+			],
 			// 'honeypot',
 			// 'csrf',
 		],
 		'after'  => [
+			'filteruser' => [
+				'except' => ['verifikasi', 'verifikasi/*', '/', 'anggota', 'anggota/*', 'admin', 'admin/*'],
+			],
 			'toolbar',
 			// 'honeypot',
 		],
