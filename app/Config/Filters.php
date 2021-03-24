@@ -38,7 +38,7 @@ class Filters extends BaseConfig
 		],
 		'after'  => [
 			'filteruser' => [
-				'except' => ['verifikasi', 'verifikasi/*', '/', 'anggota', 'anggota/*', 'admin', 'admin/*'],
+				'except' => ['BaseController', 'BaseController/*', 'verifikasi', 'verifikasi/*', '/', 'anggota', 'anggota/*', 'admin', 'admin/*'],
 			],
 			'toolbar',
 			// 'honeypot',

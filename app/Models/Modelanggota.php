@@ -52,4 +52,16 @@ class Modelanggota extends Model
 			->where('id', $data['id'])
 			->update($data);
 	}
+
+	public function cekdata($no_anggota)
+	{
+		return $this->db->table('tbl_anggota')
+			->where('no_anggota', $no_anggota)
+			->get()->getResult();
+	}
+
+	public function add($data)
+	{
+		return $this->db->table('tbl_anggota')->insert($data);
+	}
 }

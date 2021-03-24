@@ -13,4 +13,6 @@ class Admin extends BaseController
 		];
 		return view('admin/v_dasboard', $data);
 	}
+	public function import()
+	{ }
 }
