@@ -88,6 +88,11 @@
                                 <i class="fa fa-check-square-o"></i> <span>Verified</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('anggota/statistik') ?>" class="nav-link">
+                                <i class="fa fa-calculator"></i> <span>Statistik</span>
+                            </a>
+                        </li>
                     <?php } ?>
                     <!-- <li class="nav-item">
                         <a href="<?= base_url('anggota') ?>" class="nav-link">

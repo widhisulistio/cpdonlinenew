@@ -58,15 +58,7 @@
                             <td> <?= $value['nama_anggota'] ?> </td>
                             <td> <?= $value['tempat_lahir'] ?> </td>
                             <td> <?= $value['tgl_lahir'] ?> </td>
-                            <td>
-                                <?php
-                                    if ($value['jk'] == 1) {
-                                        echo 'L';
-                                    } else {
-                                        echo 'P';
-                                    }
-                                    ?>
-                            </td>
+                            <td> <?= $value['jk']; ?> </td>
                             <td> <?= $value['nama_agama'] ?> </td>
                             <td> <?= $value['alamat'] ?> </td>
                             <td> <?= $value['kota_tinggal'] ?> </td>
@@ -113,12 +105,7 @@
                     </div>
                     <div class="form-group">
                         <label>Jenis Kelamin</label>
-                        <input name="jk" class="form-control" readonly value=<?php if ($value['jk'] == 1) {
-                                                                                        echo 'Laki-laki';
-                                                                                    } else {
-                                                                                        echo 'Perempuan';
-                                                                                    } ?>>
-                        </input>
+                        <input name="jk" value="<?= $value['jk'] ?>" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label>Hp</label>
@@ -140,11 +127,6 @@
                     <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">
-                            <option value="<?= $value['status'] ?>"><?php if ($value['status'] == 1) {
-                                                                            echo 'Belum';
-                                                                        } else {
-                                                                            echo 'Ajukan Permohonan';
-                                                                        } ?></option>
                             <option value="3">Verifikasi</option>
                         </select>
                     </div>

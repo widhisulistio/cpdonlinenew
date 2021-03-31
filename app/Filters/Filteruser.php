@@ -27,7 +27,7 @@ class Filteruser implements FilterInterface
     {
         if (session()->get('log') != true) {
             # code...
-            session()->setFlashdata('pesan', 'Anda belum Login, login dulu cuy');
+            session()->setFlashdata('pesan', 'Anda belum Login, Silahkan Login Dulu');
             return redirect()->to(base_url('verifikasi'));
         }
     }
