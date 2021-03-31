@@ -74,6 +74,18 @@ class Anggota extends BaseController
 		];
 		return view('admin/v_anggota_verified', $data);
 	}
+	//melihat semua data yang telah terverifikasi
+	public function verified_all()
+	{
+		$data = [
+			'title' => 'Data Telah Di Verifikasi',
+			'subtitle' => 'Anggota',
+			//'dpc' => $this->ModelDpc->getalldata(),
+			'total_data' => $this->Modelanggota->data_verified_all(),
+			'total_kp' => $this->Modelanggota->data_verified_kp(),
+		];
+		return view('admin/v_verified_all', $data);
+	}
 	public function upload()
 	{
 		$validation = \Config\Services::validation();
@@ -169,49 +181,69 @@ class Anggota extends BaseController
 			// }
 		}
 	}
-	// public function import()
-	// {
-	// 	$file = $this->request->getFile('file_excel');
-	// 	new PHPExcel;
-	// 	//mengambil lokasi tempat file
-	// 	$filelocation = $file->getTempName();
-	// 	//baca file excel
-	// 	$objPHPExcel = PHPExcel_IOFactory::load($filelocation);
-	// 	//ambil sheet yang aktif
-	// 	$sheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true);
-	// 	//melakukan perulangan untuk mengambil data excel
-	// 	foreach ($sheet as $key => $data) {
-	// 		//skip judul pada tabel di excel
-	// 		if ($key == 1) {
-	// 			continue;
-	// 		}
-	// 		//jika ada data yang sama
-	// 		$no_anggota = $this->Modelanggota->cek_data($data['B']);
-	// 		if ($data['B'] == $no_anggota['no_anggota']) {
-	// 			# code...
-	// 			continue;
-	// 		}
-	// 		$data = array(
-	// 			'no_anggota' => $data['B'],
-	// 			'nama_anggota' => $data['C'],
-	// 			'tempat_lahir' => $data['D'],
-	// 			'tgl_lahir' => $data['E'],
-	// 			'jk' => $data['F'],
-	// 			'id_agama' => $data['G'],
-	// 			'alamat' => $data['H'],
-	// 			'kota_tinggal' => $data['I'],
-	// 			'hp' => $data['J'],
-	// 			'email' => $data['K'],
-	// 			'tempat_kerja' => $data['L'],
-	// 			'status_kepegawaian' => $data['M'],
-	// 			'id_dpc' => $data['N'],
-	// 			'level' => $data['O'],
-	// 			'status' => $data['P'],
-	// 			'tanggal' => $data['Q'],
-	// 		);
-	// 		$this->Modelanggota->add($data);
-	// 	}
-	// 	session()->setFlashdata('pesan', 'Data Berhasil di Import');
-	// 	return redirect()->to(base_url('anggota'));
-	// }
+	public function statistik()
+	{
+		$data = [
+			'title' => 'Anggota DPD DIY',
+			'subtitle' => 'Anggota',
+			//'dpc' => $this->ModelDpc->getalldata(),
+			'total' => $this->Modelanggota->total_data(),
+			'kp_data' => $this->Modelanggota->kp_data(),
+			'kota_data' => $this->Modelanggota->kota_data(),
+			'sleman_data' => $this->Modelanggota->sleman_data(),
+			'gk_data' => $this->Modelanggota->gk_data(),
+			'bantul_data' => $this->Modelanggota->bantul_data(),
+		];
+		return view('admin/v_statistik', $data);
+	}
+	public function anggota_kota()
+	{
+		$data = [
+			'title' => 'Data Anggota Kota',
+			'subtitle' => 'Anggota',
+			//'dpc' => $this->ModelDpc->getalldata(),
+			'anggota_kota' => $this->Modelanggota->anggotakota(),
+		];
+		return view('admin/v_anggota_kota', $data);
+	}
+	public function anggotabantul()
+	{
+		$data = [
+			'title' => 'Data Anggota Bantul',
+			'subtitle' => 'Anggota',
+			//'dpc' => $this->ModelDpc->getalldata(),
+			'anggota_bantul' => $this->Modelanggota->anggotabantul(),
+		];
+		return view('admin/v_anggota_bantul', $data);
+	}
+	public function anggotakp()
+	{
+		$data = [
+			'title' => 'Data Anggota Kulonprogo',
+			'subtitle' => 'Anggota',
+			//'dpc' => $this->ModelDpc->getalldata(),
+			'anggota_kp' => $this->Modelanggota->anggotakp(),
+		];
+		return view('admin/v_anggota_kp', $data);
+	}
+	public function anggotasleman()
+	{
+		$data = [
+			'title' => 'Data Anggota Sleman',
+			'subtitle' => 'Anggota',
+			//'dpc' => $this->ModelDpc->getalldata(),
+			'anggota_sleman' => $this->Modelanggota->anggotasleman(),
+		];
+		return view('admin/v_anggota_sleman', $data);
+	}
+	public function anggotagk()
+	{
+		$data = [
+			'title' => 'Data Anggota Gunung Kidul',
+			'subtitle' => 'Anggota',
+			//'dpc' => $this->ModelDpc->getalldata(),
+			'anggota_gk' => $this->Modelanggota->anggotagk(),
+		];
+		return view('admin/v_anggota_gk', $data);
+	}
 }

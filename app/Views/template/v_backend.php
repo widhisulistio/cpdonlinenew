@@ -79,15 +79,26 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?= base_url('anggota/statistik') ?>" class="nav-link">
+                                <i class="fa fa-calculator"></i> <span>Statistik</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= base_url('anggota/anggota_pengajuan') ?>" class="nav-link">
                                 <i class="fa fa-users"></i> <span>Pengajuan Verifikasi</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('anggota/anggota_verified') ?>" class="nav-link">
-                                <i class="fa fa-check-square-o"></i> <span>Verified</span>
+                                <i class="fa fa-check-square"></i> <span>Verified</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('anggota/verified_all') ?>" class="nav-link">
+                                <i class="fa fa-check-square-o"></i> <span>Verified All</span>
+                            </a>
+                        </li>
+
                     <?php } ?>
                     <!-- <li class="nav-item">
                         <a href="<?= base_url('anggota') ?>" class="nav-link">

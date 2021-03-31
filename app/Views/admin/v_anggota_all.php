@@ -88,15 +88,7 @@
                                 <td> <?= $value['nama_anggota'] ?> </td>
                                 <td> <?= $value['tempat_lahir'] ?> </td>
                                 <td> <?= $value['tgl_lahir'] ?> </td>
-                                <td>
-                                    <?php
-                                        if ($value['jk'] == 1) {
-                                            echo 'L';
-                                        } else {
-                                            echo 'P';
-                                        }
-                                        ?>
-                                </td>
+                                <td> <?= $value['jk']; ?></td>
                                 <td> <?= $value['nama_agama'] ?> </td>
                                 <td> <?= $value['alamat'] ?> </td>
                                 <td> <?= $value['kota_tinggal'] ?> </td>

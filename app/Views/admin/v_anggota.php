@@ -29,69 +29,65 @@
                 echo '</h5></div>';
             }
             ?>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th width="70px">No</th>
-                        <th>No Anggota</th>
-                        <th>Nama</th>
-                        <th>Lahir</th>
-                        <th>Tgl Lahir</th>
-                        <th>JK</th>
-                        <th>Agama</th>
-                        <th>Alamat</th>
-                        <th>Kota Tinggal</th>
-                        <th>HP</th>
-                        <th>Email</th>
-                        <th>Kerja</th>
-                        <th>DPC</th>
-                        <th>Status</th>
-                        <th width="100px">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 1;
-                    foreach ($anggota as $key => $value) { ?>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
                         <tr>
-                            <td> <?= $no++ ?> </td>
-                            <td> <?= $value['no_anggota'] ?> </td>
-                            <td> <?= $value['nama_anggota'] ?> </td>
-                            <td> <?= $value['tempat_lahir'] ?> </td>
-                            <td> <?= $value['tgl_lahir'] ?> </td>
-                            <td>
-                                <?php
-                                    if ($value['jk'] == 1) {
-                                        echo 'L';
-                                    } else {
-                                        echo 'P';
-                                    }
-                                    ?>
-                            </td>
-                            <td> <?= $value['nama_agama'] ?> </td>
-                            <td> <?= $value['alamat'] ?> </td>
-                            <td> <?= $value['kota_tinggal'] ?> </td>
-                            <td> <?= $value['hp'] ?> </td>
-                            <td> <?= $value['email'] ?> </td>
-                            <td> <?= $value['tempat_kerja'] ?> </td>
-                            <td> <?= $value['nama_dpc'] ?> </td>
-                            <td>
-                                <?php
-                                    if ($value['status'] == 1) {
-                                        echo 'Belum Diajukan';
-                                    } elseif ($value['status'] == 2) {
-                                        echo 'Permohonan Verifikasi';
-                                    } else {
-                                        echo 'Sudah Diverifikasi';
-                                    }
-                                    ?>
-                            </td>
-                            <td>
-                                <button class="btn btn-flat btn-warning btn-xs" data-toggle="modal" data-target="#edit<?= $value['id'] ?>"><i class="fa fa-edit"></i> Permohonan Verifikasi</button>
-                            </td>
+                            <th width="70px">No</th>
+                            <th>No Anggota</th>
+                            <th>Nama</th>
+                            <th>Lahir</th>
+                            <th>Tgl Lahir</th>
+                            <th>JK</th>
+                            <th>Agama</th>
+                            <th>Alamat</th>
+                            <th>Kota Tinggal</th>
+                            <th>HP</th>
+                            <th>Email</th>
+                            <th>Kerja</th>
+                            <th>DPC</th>
+                            <th>Status</th>
+                            <th width="100px">Action</th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($anggota as $key => $value) { ?>
+                            <tr>
+                                <td> <?= $no++ ?> </td>
+                                <td> <?= $value['no_anggota'] ?> </td>
+                                <td> <?= $value['nama_anggota'] ?> </td>
+                                <td> <?= $value['tempat_lahir'] ?> </td>
+                                <td> <?= $value['tgl_lahir'] ?> </td>
+                                <td> <?= $value['jk'] ?> </td>
+                                <td> <?= $value['nama_agama'] ?> </td>
+                                <td> <?= $value['alamat'] ?> </td>
+                                <td> <?= $value['kota_tinggal'] ?> </td>
+                                <td> <?= $value['hp'] ?> </td>
+                                <td> <?= $value['email'] ?> </td>
+                                <td> <?= $value['tempat_kerja'] ?> </td>
+                                <td> <?= $value['nama_dpc'] ?> </td>
+                                <td>
+                                    <?php
+                                        if ($value['status'] == 1) {
+                                            echo 'Belum Diajukan';
+                                        } elseif ($value['status'] == 2) {
+                                            echo 'Permohonan Verifikasi';
+                                        } else {
+                                            echo 'Sudah Diverifikasi';
+                                        }
+                                        ?>
+                                </td>
+                                <td>
+                                    <button class="btn btn-flat btn-warning btn-xs" data-toggle="modal" data-target="#edit<?= $value['id'] ?>"><i class="fa fa-edit"></i> Permohonan Verifikasi</button>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+
+            </div>
+
 
         </div>
     </div>
@@ -123,12 +119,7 @@
                     </div>
                     <div class="form-group">
                         <label>Jenis Kelamin</label>
-                        <input name="jk" class="form-control" readonly value=<?php if ($value['jk'] == 1) {
-                                                                                        echo 'Laki-laki';
-                                                                                    } else {
-                                                                                        echo 'Perempuan';
-                                                                                    } ?>>
-                        </input>
+                        <input name="jk" value="<?= $value['jk'] ?>" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label>Hp</label>
@@ -150,11 +141,6 @@
                     <div class="form-group">
                         <label>Staus</label>
                         <select name="status" class="form-control">
-                            <option value="<?= $value['status'] ?>"><?php if ($value['status'] == 1) {
-                                                                            echo 'Belum';
-                                                                        } else {
-                                                                            echo 'Ajukan Permohonan';
-                                                                        } ?></option>
                             <option value="1">Belum Mengajukan</option>
                             <option value="2">Ajukan Permohonan</option>
                         </select>
@@ -162,7 +148,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Verifikasi</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Ajukan Verifikasi</button>
                 </div>
                 <?php echo form_close() ?>
             </div>
