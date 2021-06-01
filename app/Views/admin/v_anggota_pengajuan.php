@@ -116,6 +116,10 @@
                         <input name="email" value="<?= $value['email'] ?>" class="form-control" readonly>
                     </div>
                     <div class="form-group">
+                        <label>Catatan</label>
+                        <input name="catatan" value="<?= $value['catatan'] ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label>DPC</label>
                         <select name="id_dpc" class="form-control">
                             <option value="">--Pilih DPC--</option>
@@ -127,6 +131,7 @@
                     <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">
+                            <option value="4">Ada Catatan</option>
                             <option value="3">Verifikasi</option>
                         </select>
                     </div>

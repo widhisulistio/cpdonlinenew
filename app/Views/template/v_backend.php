@@ -60,7 +60,7 @@
             </nav>
         </header>
 
-        <!-- =============================================== -->
+
 
         <!-- Left side column. contains the sidebar -->
         <aside class="main-sidebar">
@@ -73,14 +73,14 @@
                     <li class="header">MAIN NAVIGATION</li>
                     <?php
                     if (session()->get('level') == '1') { ?>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?= base_url('anggota/anggota_all') ?>" class="nav-link">
                                 <i class="fa fa-database"></i> <span>Anggota All</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?= base_url('anggota/statistik') ?>" class="nav-link">
-                                <i class="fa fa-calculator"></i> <span>Statistik</span>
+                                <i class="fa fa-database"></i> <span>Anggota DPD DIY</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -88,11 +88,11 @@
                                 <i class="fa fa-users"></i> <span>Pengajuan Verifikasi</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?= base_url('anggota/anggota_verified') ?>" class="nav-link">
                                 <i class="fa fa-check-square"></i> <span>Verified</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?= base_url('anggota/verified_all') ?>" class="nav-link">
                                 <i class="fa fa-check-square-o"></i> <span>Verified All</span>

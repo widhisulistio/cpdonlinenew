@@ -169,12 +169,7 @@ class Modelanggota extends Model
 	{
 		return $this->db->table('tbl_anggota')->insert($data);
 	}
-	public function deletedata($data)
-	{
-		$this->db->table('tbl_anggota')
-			->where('id', $data['id'])
-			->delete($data);
-	}
+
 	public function total_data()
 	{
 		return $this->db->table('tbl_anggota')->countAll();

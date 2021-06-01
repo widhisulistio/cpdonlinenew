@@ -45,7 +45,6 @@
                             <th>HP</th>
                             <th>Email</th>
                             <th>Kerja</th>
-                            <th>DPC</th>
                             <th>Tanggal Pengajuan</th>
                         </tr>
                     </thead>
@@ -65,7 +64,6 @@
                                 <td> <?= $value['hp'] ?> </td>
                                 <td> <?= $value['email'] ?> </td>
                                 <td> <?= $value['tempat_kerja'] ?> </td>
-                                <td> <?= $value['nama_dpc'] ?> </td>
                                 <td> <?= $value['tanggal'] ?> </td>
                             </tr>
                         <?php } ?>

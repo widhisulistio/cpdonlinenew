@@ -27,7 +27,7 @@
             if (session()->getFlashdata('delete')) {
                 echo '<div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-check"></i>';
+                <h5><i class="icon fa fa-check"></i>';
                 echo session()->getFlashdata('delete');
                 echo '</h5></div>';
             }
@@ -111,4 +111,93 @@
         </div>
     </div>
 </div>
+<!-- modal edit -->
+<?php foreach ($anggota_all as $key => $value) { ?>
+    <div class="modal fade" id="edit<?= $value['id'] ?>">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Data Anggota</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php echo form_open('anggota/editdata/' . $value['id']) ?>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>No Anggota</label>
+                        <input name="no_anggota" value="<?= $value['no_anggota'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Anggota</label>
+                        <input name="nama_anggota" value="<?= $value['nama_anggota'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggl Lahir</label>
+                        <input name="tgl_lahir" value="<?= $value['tgl_lahir'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <input name="jk" value="<?= $value['jk'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Hp</label>
+                        <input name="hp" value="<?= $value['hp'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input name="email" value="<?= $value['email'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>DPC</label>
+                        <select name="id_dpc" class="form-control">
+                            <option value="">--Pilih DPC--</option>
+                            <?php foreach ($dpc as $key => $dc) { ?>
+                                <option value="<?= $dc['id_dpc'] ?>" <?= $value['id_dpc'] == $dc['id_dpc'] ? 'selected' : '' ?>><?= $dc['nama_dpc'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status" class="form-control">
+                            <option value="3">Verifikasi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Verifikasi</button>
+                </div>
+                <?php echo form_close() ?>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<?php } ?>
+
+<!-- /.modal -->
+<?php foreach ($anggota_all as $key => $value) { ?>
+    <div class="modal fade" id="delete<?= $value['id'] ?>">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Anggota</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah ingin menghapus <b><?= $value['nama_anggota'] ?></b>?
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <a href="<?= base_url('anggota/deletedata/' . $value['id']) ?>" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<?php } ?>
 <?= $this->endSection() ?>

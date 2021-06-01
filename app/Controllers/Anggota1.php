@@ -32,7 +32,6 @@ class Anggota extends BaseController
 		$data = [
 			'title' => 'Anggota DPD DIY',
 			'subtitle' => 'Anggota',
-			'dpc' => $this->ModelDpc->getalldata(),
 			'anggota_all' => $this->Modelanggota->getalldata(),
 		];
 		return view('admin/v_anggota_all', $data);
@@ -47,7 +46,6 @@ class Anggota extends BaseController
 			'jk' => $this->request->getPost('jk'),
 			'hp' => $this->request->getPost('hp'),
 			'email' => $this->request->getPost('email'),
-			'catatan' => $this->request->getPost('catatan'),
 			'id_dpc' => $this->request->getPost('id_dpc'),
 			'status' => $this->request->getPost('status'),
 			'tanggal' => date('Y-m-d'),
@@ -76,6 +74,7 @@ class Anggota extends BaseController
 		];
 		return view('admin/v_anggota_verified', $data);
 	}
+	//melihat semua data yang telah terverifikasi
 	public function verified_all()
 	{
 		$data = [
@@ -199,8 +198,6 @@ class Anggota extends BaseController
 				$level = $row[14];
 				$status = $row[15];
 				$tanggal = $row[16];
-
-
 				//$db = \Config\Database::connect();
 				//$cek = $db->table('tbl_anggota')->getWhere(['no_anggota' => $no_anggota])->getResult();
 				$cek = $this->Modelanggota->cekdata($no_anggota);
@@ -237,7 +234,6 @@ class Anggota extends BaseController
 			// }
 		}
 	}
-
 	public function statistik()
 	{
 		$data = [
@@ -302,15 +298,5 @@ class Anggota extends BaseController
 			'anggota_gk' => $this->Modelanggota->anggotagk(),
 		];
 		return view('admin/v_anggota_gk', $data);
-	}
-
-	public function deletedata($id)
-	{
-		$data = [
-			'id' => $id,
-		];
-		$this->Modelanggota->deletedata($data);
-		session()->setFlashdata('delete', 'Data Berhasil dihapus!!!');
-		return redirect()->to(base_url('anggota/anggota_all'));
 	}
 }

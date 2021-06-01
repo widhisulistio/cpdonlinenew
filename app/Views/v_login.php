@@ -68,7 +68,7 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox"> Remember Me
+                            <a href="#">Buat akun Verifikasi</a>
                         </label>
                     </div>
                 </div>

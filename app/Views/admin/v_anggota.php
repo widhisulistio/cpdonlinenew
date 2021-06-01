@@ -38,14 +38,12 @@
                             <th>Nama</th>
                             <th>Lahir</th>
                             <th>Tgl Lahir</th>
-                            <th>JK</th>
-                            <th>Agama</th>
                             <th>Alamat</th>
                             <th>Kota Tinggal</th>
                             <th>HP</th>
-                            <th>Email</th>
                             <th>Kerja</th>
                             <th>DPC</th>
+                            <th>Catatan</th>
                             <th>Status</th>
                             <th width="100px">Action</th>
                         </tr>
@@ -59,22 +57,22 @@
                                 <td> <?= $value['nama_anggota'] ?> </td>
                                 <td> <?= $value['tempat_lahir'] ?> </td>
                                 <td> <?= $value['tgl_lahir'] ?> </td>
-                                <td> <?= $value['jk'] ?> </td>
-                                <td> <?= $value['nama_agama'] ?> </td>
                                 <td> <?= $value['alamat'] ?> </td>
                                 <td> <?= $value['kota_tinggal'] ?> </td>
                                 <td> <?= $value['hp'] ?> </td>
-                                <td> <?= $value['email'] ?> </td>
                                 <td> <?= $value['tempat_kerja'] ?> </td>
                                 <td> <?= $value['nama_dpc'] ?> </td>
+                                <td> <?= $value['catatan'] ?> </td>
                                 <td>
                                     <?php
                                         if ($value['status'] == 1) {
-                                            echo 'Belum Diajukan';
+                                            echo '<span class="label label-danger">Belum Diajukan</span>';
                                         } elseif ($value['status'] == 2) {
-                                            echo 'Permohonan Verifikasi';
+                                            echo '<span class="label label-warning">Permohonan Verifikasi</span>';
+                                        } elseif ($value['status'] == 4) {
+                                            echo '<span class="label label-primary">Ada Catatan</span>';
                                         } else {
-                                            echo 'Sudah Diverifikasi';
+                                            echo '<span class="label label-success">Sudah Diverifikasi</span>';
                                         }
                                         ?>
                                 </td>
@@ -130,6 +128,10 @@
                         <input name="email" value="<?= $value['email'] ?>" class="form-control" readonly>
                     </div>
                     <div class="form-group">
+                        <label>Catatan</label>
+                        <input name="catatan" value="<?= $value['catatan'] ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
                         <label>DPC</label>
                         <select name="id_dpc" class="form-control">
                             <option value="">--Pilih DPC--</option>
@@ -138,6 +140,7 @@
                             <?php } ?>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label>Staus</label>
                         <select name="status" class="form-control">
